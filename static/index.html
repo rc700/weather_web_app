@@ -1,0 +1,20 @@
+<html>
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        function get_weather(){
+            $.get('/weather', function(req, res){
+                var weather_desc = req['weather'][0]['description'];
+                $('#weather_data').text(weather_desc);
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <a href="#" onclick="get_weather()">Get Weather</a>
+    <p id="weather_data"> No data yet</p>
+</body>
+
+</html>
