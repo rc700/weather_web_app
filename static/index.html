@@ -7,14 +7,30 @@
             $.get('/weather', function(req, res){
                 var weather_desc = req['weather'][0]['description'];
                 $('#weather_data').text(weather_desc);
+                var temperature = req['main']['temp'];
+                $('#temp_data').text(temperature)
+            });
+        }
+
+        function get_weather_for_city(){
+            var city = $('#city').val();
+            console.log('get weather for' + city)
+            $.get('/weather?city=' + city, function(req, res){
+                console.log('got weather');
+                var weather_desc = req['weather'][0]['description'];
+                $('#weather_data').text(weather_desc);
+                var temperature = req['main']['temp'];
+                $('#temp_data').text(temperature)
             });
         }
     </script>
 </head>
 
 <body>
-    <a href="#" onclick="get_weather()">Get Weather</a>
+    <a href="#" onclick="get_weather_for_city()">Get Weather</a>
+    <input type="text" id="city">
     <p id="weather_data"> No data yet</p>
+    <p id="temp_data">No temp yet</p>
 </body>
 
 </html>
