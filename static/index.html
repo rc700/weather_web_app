@@ -18,9 +18,9 @@
             $.get('/weather?city=' + city, function(req, res){
                 console.log('got weather');
                 var weather_desc = req['weather'][0]['description'];
-                $('#weather_data').text(weather_desc);
+                $('#weather_data').text('The current weather here is: ' + weather_desc);
                 var temperature = req['main']['temp'];
-                $('#temp_data').text(temperature)
+                $('#temp_data').text('It is currently ' + (temperature - 273.15).toFixed(1) + ' celcius')
             });
         }
     </script>
